@@ -18,7 +18,7 @@ export class UsersAPI {
 
     public async getUser(userId: string): Promise<User> {
         const functionName = 'clerk.users.getUser';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [userId],
         });
@@ -28,21 +28,21 @@ export class UsersAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const user = await this.client.users.getUser(userId);
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: user,
                     });
                     resolve(user);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -84,7 +84,7 @@ export class UsersAPI {
         createdAt?: Date;
     }): Promise<User> {
         const functionName = 'clerk.users.createUser';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt}],
         });
@@ -94,21 +94,21 @@ export class UsersAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const createdUser = await this.client.users.createUser({externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt});
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: createdUser,
                     });
                     resolve(createdUser);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -124,7 +124,7 @@ export class UsersAPI {
         organizationId?: string[];
     }): Promise<PaginatedResourceResponse<User[]>> {
         const functionName = 'clerk.users.getUserList';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId}],
         });
@@ -134,21 +134,21 @@ export class UsersAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const userList = await this.client.users.getUserList({organizationId});
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: userList,
                     });
                     resolve(userList);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });

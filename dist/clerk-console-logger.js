@@ -2,21 +2,21 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClerkConsoleLogger = void 0;
 class ClerkConsoleLogger {
-    logInput({ functionName, args }) {
+    logClerkInput({ functionName, args }) {
         console.log({
             type: 'input',
             functionName,
             args,
         });
     }
-    logOutput({ functionName, output }) {
+    logClerkOutput({ functionName, output }) {
         console.log({
             type: 'output',
             functionName,
             output,
         });
     }
-    logRetryError({ functionName, currentAttempt, error }) {
+    logClerkRetryError({ functionName, currentAttempt, error }) {
         console.log({
             type: 'retryError',
             functionName,
@@ -24,7 +24,7 @@ class ClerkConsoleLogger {
             error,
         });
     }
-    logError({ functionName, error }) {
+    logClerkError({ functionName, error }) {
         console.log({
             type: 'error',
             functionName,

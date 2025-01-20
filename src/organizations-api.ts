@@ -25,7 +25,7 @@ export class OrganizationAPI {
         organizationId: string;
     }): Promise<Organization> {
         const functionName = 'clerk.organizations.getOrganization';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId}],
         });
@@ -35,21 +35,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organization = await this.client.organizations.getOrganization({ organizationId });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organization,
                     });
                     resolve(organization);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -75,7 +75,7 @@ export class OrganizationAPI {
         publicMetadata?: OrganizationInvitationPublicMetadata;
     }): Promise<OrganizationInvitation> {
         const functionName = 'clerk.organizations.createOrganizationInvitation';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, inviterUserId, emailAddress, role, redirectUrl, publicMetadata}],
         });
@@ -85,21 +85,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organizationInvitation = await this.client.organizations.createOrganizationInvitation({ organizationId, inviterUserId, emailAddress, role, redirectUrl, publicMetadata });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organizationInvitation,
                     });
                     resolve(organizationInvitation);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -119,7 +119,7 @@ export class OrganizationAPI {
         offset?: number;
     }): Promise<PaginatedResourceResponse<OrganizationMembership[]>> {
         const functionName = 'clerk.organizations.getOrganizationMembershipList';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, limit, offset}],
         });
@@ -129,21 +129,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organizationMembershipsPage = await this.client.organizations.getOrganizationMembershipList({ organizationId, limit, offset });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organizationMembershipsPage,
                     });
                     resolve(organizationMembershipsPage);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -163,7 +163,7 @@ export class OrganizationAPI {
         requestingUserId: string;
     }) {
         const functionName = 'clerk.organizations.revokeOrganizationInvitation';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, invitationId, requestingUserId}],
         });
@@ -173,21 +173,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organizationInvitation = await this.client.organizations.revokeOrganizationInvitation({ organizationId, invitationId, requestingUserId });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organizationInvitation,
                     });
                     resolve(organizationInvitation);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -207,7 +207,7 @@ export class OrganizationAPI {
         offset?: number;
     }) {
         const functionName = 'clerk.organizations.getOrganizationInvitationList';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, limit, offset}],
         });
@@ -217,21 +217,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const invitationsPage = await this.client.organizations.getOrganizationInvitationList({ organizationId, limit, offset });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: invitationsPage,
                     });
                     resolve(invitationsPage);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -249,7 +249,7 @@ export class OrganizationAPI {
         userId: string;
     }) {
         const functionName = 'clerk.organizations.deleteOrganizationMembership';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, userId}],
         });
@@ -259,21 +259,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organizationMembership = await this.client.organizations.deleteOrganizationMembership({ organizationId, userId });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organizationMembership,
                     });
                     resolve(organizationMembership);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -293,7 +293,7 @@ export class OrganizationAPI {
         role: OrganizationMembershipRole;
     }) {
         const functionName = 'clerk.organizations.updateOrganizationMembership';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, userId, role}],
         });
@@ -303,21 +303,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organizationMembership = await this.client.organizations.updateOrganizationMembership({ organizationId, userId, role });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organizationMembership,
                     });
                     resolve(organizationMembership);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -343,7 +343,7 @@ export class OrganizationAPI {
         privateMetadata?: OrganizationPrivateMetadata;
     }) {
         const functionName = 'clerk.organizations.createOrganization';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{name, slug, createdBy, maxAllowedMemberships, publicMetadata, privateMetadata}],
         });
@@ -353,21 +353,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organization = await this.client.organizations.createOrganization({ name, slug, createdBy, maxAllowedMemberships, publicMetadata, privateMetadata });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organization,
                     });
                     resolve(organization);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -385,7 +385,7 @@ export class OrganizationAPI {
         uploaderUserId?: string;
     }) {
         const functionName = 'clerk.organizations.updateOrganizationLogo';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, file}],
         });
@@ -396,21 +396,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organization = await this.client.organizations.updateOrganizationLogo(organizationId, { file, uploaderUserId });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organization,
                     });
                     resolve(organization);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -432,7 +432,7 @@ export class OrganizationAPI {
         privateMetadata?: OrganizationPrivateMetadata;
     }): Promise<Organization> {
         const functionName = 'clerk.organizations.updateOrganization';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, name, slug, publicMetadata, privateMetadata}],
         });
@@ -442,21 +442,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organization = await this.client.organizations.updateOrganization(organizationId, { name, slug, publicMetadata, privateMetadata });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organization,
                     });
                     resolve(organization);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -468,7 +468,7 @@ export class OrganizationAPI {
 
     public async deleteOrganization(organizationId: string): Promise<Organization> {
         const functionName = 'clerk.organizations.deleteOrganization';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId}],
         });
@@ -478,21 +478,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organization = await this.client.organizations.deleteOrganization(organizationId);
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organization,
                     });
                     resolve(organization);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -512,7 +512,7 @@ export class OrganizationAPI {
         role: OrganizationMembershipRole;
     }): Promise<OrganizationMembership> {
         const functionName = 'clerk.organizations.createOrganizationMembership';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{organizationId, userId, role}],
         });
@@ -523,21 +523,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organizationMembership = await this.client.organizations.createOrganizationMembership({ organizationId, userId, role });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organizationMembership,
                     });
                     resolve(organizationMembership);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -559,7 +559,7 @@ export class OrganizationAPI {
         offset?: number;
     }): Promise<PaginatedResourceResponse<Organization[]>> {
         const functionName = 'clerk.organizations.getOrganizationList';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{includeMembersCount, query, limit, offset}],
         });
@@ -569,21 +569,21 @@ export class OrganizationAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const organizationsPage = await this.client.organizations.getOrganizationList({ includeMembersCount, query, limit, offset });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: organizationsPage,
                     });
                     resolve(organizationsPage);
                 } catch(error) {
                     if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });

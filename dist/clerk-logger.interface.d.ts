@@ -1,18 +1,18 @@
 export interface ClerkLogger {
-    logInput({ functionName, args, }: {
+    logClerkInput({ functionName, args, }: {
         functionName: string;
         args: any[];
     }): void;
-    logOutput({ functionName, output, }: {
+    logClerkOutput({ functionName, output, }: {
         functionName: string;
         output: any;
     }): void;
-    logRetryError({ functionName, currentAttempt, error, }: {
+    logClerkRetryError({ functionName, currentAttempt, error, }: {
         functionName: string;
         currentAttempt: number;
         error: any;
     }): void;
-    logError({ functionName, error, }: {
+    logClerkError({ functionName, error, }: {
         functionName: string;
         error: any;
     }): void;

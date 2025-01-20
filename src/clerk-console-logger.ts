@@ -1,7 +1,7 @@
 import { ClerkLogger } from "./clerk-logger.interface";
 
 export class ClerkConsoleLogger implements ClerkLogger {
-    public logInput({ functionName, args }: { functionName: string; args: any[] }): void {
+    public logClerkInput({ functionName, args }: { functionName: string; args: any[] }): void {
         console.log({
             type: 'input',
             functionName,
@@ -9,7 +9,7 @@ export class ClerkConsoleLogger implements ClerkLogger {
         });
     }
 
-    public logOutput({ functionName, output }: { functionName: string; output: any }): void {
+    public logClerkOutput({ functionName, output }: { functionName: string; output: any }): void {
         console.log({
             type: 'output',
             functionName,
@@ -17,7 +17,7 @@ export class ClerkConsoleLogger implements ClerkLogger {
         });
     }
 
-    public logRetryError({ functionName, currentAttempt, error }: { functionName: string; currentAttempt: number; error: any }): void {
+    public logClerkRetryError({ functionName, currentAttempt, error }: { functionName: string; currentAttempt: number; error: any }): void {
         console.log({
             type: 'retryError',
             functionName,
@@ -26,7 +26,7 @@ export class ClerkConsoleLogger implements ClerkLogger {
         });
     }
 
-    public logError({ functionName, error }: { functionName: string; error: any }): void {
+    public logClerkError({ functionName, error }: { functionName: string; error: any }): void {
         console.log({
             type: 'error',
             functionName,

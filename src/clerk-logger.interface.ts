@@ -1,5 +1,5 @@
 export interface ClerkLogger {
-    logInput({
+    logClerkInput({
         functionName,
         args,
     }: {
@@ -7,7 +7,7 @@ export interface ClerkLogger {
         args: any[];
     }): void;
 
-    logOutput({
+    logClerkOutput({
         functionName,
         output,
     }: {
@@ -15,7 +15,7 @@ export interface ClerkLogger {
         output: any;
     }): void;
 
-    logRetryError({
+    logClerkRetryError({
         functionName,
         currentAttempt,
         error,
@@ -25,7 +25,7 @@ export interface ClerkLogger {
         error: any;
     }): void;
 
-    logError({
+    logClerkError({
         functionName,
         error,
     }: {

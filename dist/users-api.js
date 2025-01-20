@@ -10,7 +10,7 @@ class UsersAPI {
     }
     async getUser(userId) {
         const functionName = 'clerk.users.getUser';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [userId],
         });
@@ -19,7 +19,7 @@ class UsersAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const user = await this.client.users.getUser(userId);
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: user,
                     });
@@ -27,14 +27,14 @@ class UsersAPI {
                 }
                 catch (error) {
                     if (operation.retry(error) && error.status && utils_1.retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -45,7 +45,7 @@ class UsersAPI {
     }
     async createUser({ externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt, }) {
         const functionName = 'clerk.users.createUser';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{ externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt }],
         });
@@ -54,7 +54,7 @@ class UsersAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const createdUser = await this.client.users.createUser({ externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: createdUser,
                     });
@@ -62,14 +62,14 @@ class UsersAPI {
                 }
                 catch (error) {
                     if (operation.retry(error) && error.status && utils_1.retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
@@ -80,7 +80,7 @@ class UsersAPI {
     }
     async getUserList({ organizationId, }) {
         const functionName = 'clerk.users.getUserList';
-        this.logger.logInput({
+        this.logger.logClerkInput({
             functionName,
             args: [{ organizationId }],
         });
@@ -89,7 +89,7 @@ class UsersAPI {
             operation.attempt(async (currentAttempt) => {
                 try {
                     const userList = await this.client.users.getUserList({ organizationId });
-                    this.logger.logOutput({
+                    this.logger.logClerkOutput({
                         functionName,
                         output: userList,
                     });
@@ -97,14 +97,14 @@ class UsersAPI {
                 }
                 catch (error) {
                     if (operation.retry(error) && error.status && utils_1.retryStatuses.includes(error.status)) {
-                        this.logger.logRetryError({
+                        this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
                             error,
                         });
                         return;
                     }
-                    this.logger.logError({
+                    this.logger.logClerkError({
                         functionName,
                         error,
                     });
