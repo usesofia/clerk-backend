@@ -29,4 +29,5 @@ export declare class UsersAPI {
         organizationId?: string[];
         emailAddress?: string[];
     }): Promise<PaginatedResourceResponse<User[]>>;
+    deleteUser(userId: string): Promise<User>;
 }

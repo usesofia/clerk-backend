@@ -113,6 +113,41 @@ class UsersAPI {
             });
         });
     }
+    async deleteUser(userId) {
+        const functionName = 'clerk.users.deleteUser';
+        this.logger.logClerkInput({
+            functionName,
+            args: [userId],
+        });
+        const operation = retry.operation(utils_1.retryOptions);
+        return new Promise((resolve, reject) => {
+            operation.attempt(async (currentAttempt) => {
+                try {
+                    const user = await this.client.users.deleteUser(userId);
+                    this.logger.logClerkOutput({
+                        functionName,
+                        output: user,
+                    });
+                    resolve(user);
+                }
+                catch (error) {
+                    if (operation.retry(error) && error.status && utils_1.retryStatuses.includes(error.status)) {
+                        this.logger.logClerkRetryError({
+                            functionName,
+                            currentAttempt,
+                            error,
+                        });
+                        return;
+                    }
+                    this.logger.logClerkError({
+                        functionName,
+                        error,
+                    });
+                    reject(error);
+                }
+            });
+        });
+    }
 }
 exports.UsersAPI = UsersAPI;
 //# sourceMappingURL=users-api.js.map
