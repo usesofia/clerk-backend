@@ -27,5 +27,6 @@ export const retryOptions = {
 };
 
 export const retryStatuses = [
+    undefined,
     429
 ]

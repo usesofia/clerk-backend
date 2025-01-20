@@ -18,6 +18,7 @@ exports.retryOptions = {
     maxTimeout: 5000,
 };
 exports.retryStatuses = [
+    undefined,
     429
 ];
 //# sourceMappingURL=utils.js.map

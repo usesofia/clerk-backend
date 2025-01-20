@@ -10,4 +10,4 @@ export declare const retryOptions: {
     minTimeout: number;
     maxTimeout: number;
 };
-export declare const retryStatuses: number[];
+export declare const retryStatuses: (number | undefined)[];

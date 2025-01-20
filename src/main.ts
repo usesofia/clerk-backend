@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import { createClerkClient } from "./utils";
-import { ClerkConsoleLogger } from './clerk-console-logger';
 import { ClerkEmptyLogger } from './clerk-empty-logger';
 
 async function main() {

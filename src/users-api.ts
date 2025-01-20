@@ -34,7 +34,7 @@ export class UsersAPI {
                     });
                     resolve(user);
                 } catch(error) {
-                    if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
+                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -106,7 +106,7 @@ export class UsersAPI {
                     });
                     resolve(createdUser);
                 } catch(error) {
-                    if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
+                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -148,7 +148,7 @@ export class UsersAPI {
                     });
                     resolve(userList);
                 } catch(error) {
-                    if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
+                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -184,7 +184,7 @@ export class UsersAPI {
                     });
                     resolve(user);
                 } catch(error) {
-                    if(operation.retry(error) && error.status && retryStatuses.includes(error.status)) {
+                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
