@@ -78,17 +78,17 @@ class UsersAPI {
             });
         });
     }
-    async getUserList({ organizationId, }) {
+    async getUserList({ organizationId, emailAddress, }) {
         const functionName = 'clerk.users.getUserList';
         this.logger.logClerkInput({
             functionName,
-            args: [{ organizationId }],
+            args: [{ organizationId, emailAddress }],
         });
         const operation = retry.operation(utils_1.retryOptions);
         return new Promise((resolve, reject) => {
             operation.attempt(async (currentAttempt) => {
                 try {
-                    const userList = await this.client.users.getUserList({ organizationId });
+                    const userList = await this.client.users.getUserList({ organizationId, emailAddress });
                     this.logger.logClerkOutput({
                         functionName,
                         output: userList,

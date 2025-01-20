@@ -25,7 +25,8 @@ export declare class UsersAPI {
         privateMetadata?: UserPrivateMetadata;
         unsafeMetadata?: UserUnsafeMetadata;
     }): Promise<User>;
-    getUserList({ organizationId, }: {
+    getUserList({ organizationId, emailAddress, }: {
         organizationId?: string[];
+        emailAddress?: string[];
     }): Promise<PaginatedResourceResponse<User[]>>;
 }

@@ -126,20 +126,22 @@ export class UsersAPI {
 
     public async getUserList({
         organizationId,
+        emailAddress,
     }: {
         organizationId?: string[];
+        emailAddress?: string[];
     }): Promise<PaginatedResourceResponse<User[]>> {
         const functionName = 'clerk.users.getUserList';
         this.logger.logClerkInput({
             functionName,
-            args: [{organizationId}],
+            args: [{organizationId, emailAddress}],
         });
         const operation = retry.operation(retryOptions);
 
         return new Promise((resolve, reject) => {
             operation.attempt(async (currentAttempt) => {
                 try {
-                    const userList = await this.client.users.getUserList({organizationId});
+                    const userList = await this.client.users.getUserList({organizationId, emailAddress});
                     this.logger.logClerkOutput({
                         functionName,
                         output: userList,
