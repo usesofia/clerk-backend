@@ -6,7 +6,7 @@ export declare class UsersAPI {
     private logger;
     constructor(client: _ClerkClient, logger: ClerkLogger);
     getUser(userId: string): Promise<User>;
-    createUser({ externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt, }: {
+    createUser({ externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt, publicMetadata, privateMetadata, unsafeMetadata, }: {
         externalId?: string;
         emailAddress?: string[];
         phoneNumber?: string[];
@@ -21,6 +21,9 @@ export declare class UsersAPI {
         totpSecret?: string;
         backupCodes?: string[];
         createdAt?: Date;
+        publicMetadata?: UserPublicMetadata;
+        privateMetadata?: UserPrivateMetadata;
+        unsafeMetadata?: UserUnsafeMetadata;
     }): Promise<User>;
     getUserList({ organizationId, }: {
         organizationId?: string[];

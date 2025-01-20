@@ -67,6 +67,9 @@ export class UsersAPI {
         totpSecret,
         backupCodes,
         createdAt,
+        publicMetadata,
+        privateMetadata,
+        unsafeMetadata,
     }: {
         externalId?: string;
         emailAddress?: string[];
@@ -82,18 +85,21 @@ export class UsersAPI {
         totpSecret?: string;
         backupCodes?: string[];
         createdAt?: Date;
+        publicMetadata?: UserPublicMetadata;
+        privateMetadata?: UserPrivateMetadata;
+        unsafeMetadata?: UserUnsafeMetadata;
     }): Promise<User> {
         const functionName = 'clerk.users.createUser';
         this.logger.logClerkInput({
             functionName,
-            args: [{externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt}],
+            args: [{externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt, publicMetadata, privateMetadata, unsafeMetadata}],
         });
         const operation = retry.operation(retryOptions);
 
         return new Promise((resolve, reject) => {
             operation.attempt(async (currentAttempt) => {
                 try {
-                    const createdUser = await this.client.users.createUser({externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt});
+                    const createdUser = await this.client.users.createUser({externalId, emailAddress, phoneNumber, username, password, firstName, lastName, skipPasswordChecks, skipPasswordRequirement, skipLegalChecks, legalAcceptedAt, totpSecret, backupCodes, createdAt, publicMetadata, privateMetadata, unsafeMetadata});
                     this.logger.logClerkOutput({
                         functionName,
                         output: createdUser,
