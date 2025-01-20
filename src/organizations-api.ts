@@ -161,7 +161,7 @@ export class OrganizationAPI {
         organizationId: string;
         invitationId: string;
         requestingUserId: string;
-    }) {
+    }): Promise<OrganizationInvitation> {
         const functionName = 'clerk.organizations.revokeOrganizationInvitation';
         this.logger.logClerkInput({
             functionName,
@@ -205,7 +205,7 @@ export class OrganizationAPI {
         organizationId: string;
         limit?: number;
         offset?: number;
-    }) {
+    }): Promise<PaginatedResourceResponse<OrganizationInvitation[]>> {
         const functionName = 'clerk.organizations.getOrganizationInvitationList';
         this.logger.logClerkInput({
             functionName,
@@ -291,7 +291,7 @@ export class OrganizationAPI {
         organizationId: string;
         userId: string;
         role: OrganizationMembershipRole;
-    }) {
+    }): Promise<OrganizationMembership> {
         const functionName = 'clerk.organizations.updateOrganizationMembership';
         this.logger.logClerkInput({
             functionName,
@@ -341,7 +341,7 @@ export class OrganizationAPI {
         maxAllowedMemberships?: number;
         publicMetadata?: OrganizationPublicMetadata;
         privateMetadata?: OrganizationPrivateMetadata;
-    }) {
+    }): Promise<Organization> {
         const functionName = 'clerk.organizations.createOrganization';
         this.logger.logClerkInput({
             functionName,
@@ -383,7 +383,7 @@ export class OrganizationAPI {
     }: {
         file: Blob | File;
         uploaderUserId?: string;
-    }) {
+    }): Promise<Organization> {
         const functionName = 'clerk.organizations.updateOrganizationLogo';
         this.logger.logClerkInput({
             functionName,

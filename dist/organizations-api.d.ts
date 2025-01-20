@@ -25,12 +25,12 @@ export declare class OrganizationAPI {
         organizationId: string;
         invitationId: string;
         requestingUserId: string;
-    }): Promise<unknown>;
+    }): Promise<OrganizationInvitation>;
     getOrganizationInvitationList({ organizationId, limit, offset, }: {
         organizationId: string;
         limit?: number;
         offset?: number;
-    }): Promise<unknown>;
+    }): Promise<PaginatedResourceResponse<OrganizationInvitation[]>>;
     deleteOrganizationMembership({ organizationId, userId, }: {
         organizationId: string;
         userId: string;
@@ -39,7 +39,7 @@ export declare class OrganizationAPI {
         organizationId: string;
         userId: string;
         role: OrganizationMembershipRole;
-    }): Promise<unknown>;
+    }): Promise<OrganizationMembership>;
     createOrganization({ name, slug, createdBy, maxAllowedMemberships, publicMetadata, privateMetadata, }: {
         name: string;
         slug?: string;
@@ -47,11 +47,11 @@ export declare class OrganizationAPI {
         maxAllowedMemberships?: number;
         publicMetadata?: OrganizationPublicMetadata;
         privateMetadata?: OrganizationPrivateMetadata;
-    }): Promise<unknown>;
+    }): Promise<Organization>;
     updateOrganizationLogo(organizationId: string, { file, uploaderUserId, }: {
         file: Blob | File;
         uploaderUserId?: string;
-    }): Promise<unknown>;
+    }): Promise<Organization>;
     updateOrganization(organizationId: string, { name, slug, publicMetadata, privateMetadata, }: {
         name?: string;
         slug?: string;
