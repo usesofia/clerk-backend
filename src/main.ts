@@ -1,10 +1,12 @@
 import 'dotenv/config';
 import { createClerkClient } from "./utils";
+import { ClerkConsoleLogger } from './clerk-console-logger';
+import { ClerkEmptyLogger } from './clerk-empty-logger';
 
 async function main() {
     const clerk = createClerkClient({
         secretKey: process.env.CLERK_SECRET_KEY,
-    });
+    }, new ClerkEmptyLogger());
 
     for(let i = 0; i < 10; i++) {
         await Promise.all(Array.from({ length: 20 }, async (_, index) => {

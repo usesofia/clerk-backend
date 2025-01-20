@@ -1,0 +1,1 @@
+{"version":3,"file":"clerk-empty-logger.js","sourceRoot":"","sources":["../src/clerk-empty-logger.ts"],"names":[],"mappings":";;;AAEA,MAAa,gBAAgB;IAClB,QAAQ,CAAC,EAAE,YAAY,EAAE,IAAI,EAAyC,IAAS,CAAC;IAChF,SAAS,CAAC,EAAE,YAAY,EAAE,MAAM,EAAyC,IAAS,CAAC;IACnF,aAAa,CAAC,EAAE,YAAY,EAAE,cAAc,EAAE,KAAK,EAAgE,IAAS,CAAC;IAC7H,QAAQ,CAAC,EAAE,YAAY,EAAE,KAAK,EAAwC,IAAS,CAAC;CAC1F;AALD,4CAKC"}
