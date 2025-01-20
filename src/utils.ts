@@ -8,10 +8,11 @@ import {
 import { JwtPayload as _JwtPayload } from '@clerk/types';
 import { OrganizationAPI as _OrganizationAPI } from '@clerk/backend/dist/api/endpoints';
 import { ClerkClient } from './clerk-client';
+import { ClerkLogger } from './clerk-logger.interface';
 
 
-export function createClerkClient(options: _ClerkOptions) {
-    return new ClerkClient(options);
+export function createClerkClient(options: _ClerkOptions, logger: ClerkLogger) {
+    return new ClerkClient(options, logger);
 }
 
 export function verifyToken(token: string, options: _VerifyTokenOptions): Promise<_JwtPayload> {

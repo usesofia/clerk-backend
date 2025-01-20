@@ -5,15 +5,18 @@ import {
 } from '@clerk/backend';
 import { OrganizationAPI } from './organizations-api';
 import { UsersAPI } from './users-api';
+import { ClerkLogger } from './clerk-logger.interface';
 
 export class ClerkClient {
     private client: _ClerkClient;
+    private logger: ClerkLogger;
     public organizations: OrganizationAPI;
     public users: UsersAPI;
-    
-    constructor(options: _ClerkOptions) {
+
+    constructor(options: _ClerkOptions, logger: ClerkLogger) {
         this.client = _createClerkClient(options);
-        this.organizations = new OrganizationAPI(this.client);
-        this.users = new UsersAPI(this.client);
+        this.logger = logger;
+        this.organizations = new OrganizationAPI(this.client, this.logger);
+        this.users = new UsersAPI(this.client, this.logger);
     }
 }
