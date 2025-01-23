@@ -1,5 +1,6 @@
 import {
     ClerkClient as _ClerkClient,
+    OrganizationMembership,
     User,
 } from '@clerk/backend';
 import { retryStatuses, retryOptions } from './utils';
@@ -183,6 +184,50 @@ export class UsersAPI {
                         output: user,
                     });
                     resolve(user);
+                } catch(error) {
+                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                        this.logger.logClerkRetryError({
+                            functionName,
+                            currentAttempt,
+                            error,
+                        });
+                        return;
+                    }
+                    this.logger.logClerkError({
+                        functionName,
+                        error,
+                    });
+                    reject(error);
+                }
+            });
+        });
+    }
+
+    public async getOrganizationMembershipList({
+        userId,
+        limit,
+        offset,
+    }: {
+        userId: string
+        limit?: number
+        offset?: number
+    }): Promise<PaginatedResourceResponse<OrganizationMembership[]>> {
+        const functionName = 'clerk.users.getOrganizationMembershipList';
+        this.logger.logClerkInput({
+            functionName,
+            args: [userId],
+        });
+        const operation = retry.operation(retryOptions);
+
+        return new Promise((resolve, reject) => {
+            operation.attempt(async (currentAttempt) => {
+                try {
+                    const membershipsPage = await this.client.users.getOrganizationMembershipList({userId, limit, offset});
+                    this.logger.logClerkOutput({
+                        functionName,
+                        output: membershipsPage,
+                    });
+                    resolve(membershipsPage);
                 } catch(error) {
                     if(operation.retry(error) && retryStatuses.includes(error.status)) {
                         this.logger.logClerkRetryError({

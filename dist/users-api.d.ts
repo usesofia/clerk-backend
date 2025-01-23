@@ -1,4 +1,4 @@
-import { ClerkClient as _ClerkClient, User } from '@clerk/backend';
+import { ClerkClient as _ClerkClient, OrganizationMembership, User } from '@clerk/backend';
 import { ClerkLogger } from './clerk-logger.interface';
 import { PaginatedResourceResponse } from '@clerk/backend/dist/api/resources/Deserializer';
 export declare class UsersAPI {
@@ -30,4 +30,9 @@ export declare class UsersAPI {
         emailAddress?: string[];
     }): Promise<PaginatedResourceResponse<User[]>>;
     deleteUser(userId: string): Promise<User>;
+    getOrganizationMembershipList({ userId, limit, offset, }: {
+        userId: string;
+        limit?: number;
+        offset?: number;
+    }): Promise<PaginatedResourceResponse<OrganizationMembership[]>>;
 }
