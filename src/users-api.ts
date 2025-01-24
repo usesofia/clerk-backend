@@ -35,7 +35,7 @@ export class UsersAPI {
                     });
                     resolve(user);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -107,7 +107,7 @@ export class UsersAPI {
                     });
                     resolve(createdUser);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -153,7 +153,7 @@ export class UsersAPI {
                     });
                     resolve(userList);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -189,7 +189,7 @@ export class UsersAPI {
                     });
                     resolve(user);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -233,7 +233,7 @@ export class UsersAPI {
                     });
                     resolve(membershipsPage);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,

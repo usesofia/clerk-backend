@@ -41,7 +41,7 @@ export class OrganizationAPI {
                     });
                     resolve(organization);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -91,7 +91,7 @@ export class OrganizationAPI {
                     });
                     resolve(organizationInvitation);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -135,7 +135,7 @@ export class OrganizationAPI {
                     });
                     resolve(organizationMembershipsPage);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -179,7 +179,7 @@ export class OrganizationAPI {
                     });
                     resolve(organizationInvitation);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -223,7 +223,7 @@ export class OrganizationAPI {
                     });
                     resolve(invitationsPage);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -265,7 +265,7 @@ export class OrganizationAPI {
                     });
                     resolve(organizationMembership);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -309,7 +309,7 @@ export class OrganizationAPI {
                     });
                     resolve(organizationMembership);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -359,7 +359,7 @@ export class OrganizationAPI {
                     });
                     resolve(organization);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -402,7 +402,7 @@ export class OrganizationAPI {
                     });
                     resolve(organization);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -448,7 +448,7 @@ export class OrganizationAPI {
                     });
                     resolve(organization);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -484,7 +484,7 @@ export class OrganizationAPI {
                     });
                     resolve(organization);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -529,7 +529,7 @@ export class OrganizationAPI {
                     });
                     resolve(organizationMembership);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
@@ -575,7 +575,7 @@ export class OrganizationAPI {
                     });
                     resolve(organizationsPage);
                 } catch(error) {
-                    if(operation.retry(error) && retryStatuses.includes(error.status)) {
+                    if(retryStatuses.includes(error.status) && operation.retry(error)) {
                         this.logger.logClerkRetryError({
                             functionName,
                             currentAttempt,
