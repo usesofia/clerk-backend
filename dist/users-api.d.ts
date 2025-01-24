@@ -25,9 +25,11 @@ export declare class UsersAPI {
         privateMetadata?: UserPrivateMetadata;
         unsafeMetadata?: UserUnsafeMetadata;
     }): Promise<User>;
-    getUserList({ organizationId, emailAddress, }: {
+    getUserList({ organizationId, emailAddress, limit, offset, }: {
         organizationId?: string[];
         emailAddress?: string[];
+        limit?: number;
+        offset?: number;
     }): Promise<PaginatedResourceResponse<User[]>>;
     deleteUser(userId: string): Promise<User>;
     getOrganizationMembershipList({ userId, limit, offset, }: {
