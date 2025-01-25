@@ -78,6 +78,41 @@ class OrganizationAPI {
             });
         });
     }
+    async deleteOrganizationLogo(organizationId) {
+        const functionName = 'clerk.organizations.deleteOrganizationLogo';
+        this.logger.logClerkInput({
+            functionName,
+            args: [organizationId],
+        });
+        const operation = retry.operation(utils_1.retryOptions);
+        return new Promise((resolve, reject) => {
+            operation.attempt(async (currentAttempt) => {
+                try {
+                    const organization = await this.client.organizations.deleteOrganizationLogo(organizationId);
+                    this.logger.logClerkOutput({
+                        functionName,
+                        output: organization,
+                    });
+                    resolve(organization);
+                }
+                catch (error) {
+                    if (utils_1.retryStatuses.includes(error.status) && operation.retry(error)) {
+                        this.logger.logClerkRetryError({
+                            functionName,
+                            currentAttempt,
+                            error,
+                        });
+                        return;
+                    }
+                    this.logger.logClerkError({
+                        functionName,
+                        error,
+                    });
+                    reject(operation.mainError());
+                }
+            });
+        });
+    }
     async getOrganizationMembershipList({ organizationId, limit, offset, }) {
         const functionName = 'clerk.organizations.getOrganizationMembershipList';
         this.logger.logClerkInput({

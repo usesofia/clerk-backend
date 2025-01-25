@@ -16,6 +16,7 @@ export declare class OrganizationAPI {
         redirectUrl?: string;
         publicMetadata?: OrganizationInvitationPublicMetadata;
     }): Promise<OrganizationInvitation>;
+    deleteOrganizationLogo(organizationId: string): Promise<Organization>;
     getOrganizationMembershipList({ organizationId, limit, offset, }: {
         organizationId: string;
         limit?: number;
